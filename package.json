@@ -1,0 +1,25 @@
+{
+  "name": "pizzaria-nodejs",
+  "version": "1.0.0",
+  "description": "Criando um sistema de banco de dados e login de uma pizzaria nodejs (iTalents)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GustOki/pizzaria-nodejs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GustOki/pizzaria-nodejs/issues"
+  },
+  "homepage": "https://github.com/GustOki/pizzaria-nodejs#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^7.0.3"
+  }
+}
