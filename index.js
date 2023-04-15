@@ -8,7 +8,7 @@ app.use(express.json());
 
 app.get("/", (req,res) => {
     res.send({
-        message: "BEM-VINDO A PIZZARIA!"
+        message: "BEM-VINDO AO SISTEMA DA PIZZARIA!"
     });
 });
 
