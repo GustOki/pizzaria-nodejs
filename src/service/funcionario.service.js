@@ -12,7 +12,7 @@ const createEmployeeService = (body) => {
     return Funcionario.create(body);
 };
 const updateEmployeeService = (id, body) => {
-    return Funcionario.findByIdAndUpdate(id, body { returnDocument: "after" });
+    return Funcionario.findByIdAndUpdate(id, body, { returnDocument: "after" });
 };
 
 const removeEmployeeService = (id) => {
