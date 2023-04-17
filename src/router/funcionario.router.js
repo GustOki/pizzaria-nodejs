@@ -4,7 +4,7 @@ const funcionarioController = require("../controller/funcionario.controller");
 
 // rotas GET
 router.get('/findById:id', funcionarioController.findEmployeeByIdController);
-router.get('findAll', funcionarioController.findAllEmployeesController);
+router.get('/findAll', funcionarioController.findAllEmployeesController);
 
 // rotas POST
 router.post('/create', funcionarioController.createEmployeeController);
