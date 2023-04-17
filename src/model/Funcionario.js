@@ -3,19 +3,19 @@ const mongoose = require("mongoose");
 const FuncionarioSchema = new mongoose.Schema({
     nome: {type: String, required: true},
     registro: {type: String, unique: true, required: true},
-    senha: {type: String, require: true},
-    cargo: {type: String, require: true},
+    senha: {type: String, required: true},
+    cargo: {type: String, required: true},
     enderecos: [
         {
-            rua: {type: String, require: true},
-            numero: {type: Number, require: true},
-            complemento: {type: String, require: false},
-            CEP: {type: String, require: true},
-            createdAt: {type: Date, require: true}
+            rua: {type: String, required: true},
+            numero: {type: Number, required: true},
+            complemento: {type: String, required: false},
+            CEP: {type: String, required: true},
+            createdAt: {type: Date, required: true}
         }
     ],
-    createdAt: {type: Date, require: true},
-    admin: {type: Boolean, require: true, default: false},
+    createdAt: {type: Date, required: true},
+    admin: {type: Boolean, required: true, default: false},
 });
 
 const Funcionario = mongoose.model("funcionarios", FuncionarioSchema);
