@@ -1,7 +1,7 @@
 const express = require("express");
-const connectToDatabase = require("./src/database/database");
+const connectToDatabase = require("./src/database/database"); //arquivo de conexao com o banco
 
-const funcionario = require("./src/router/funcionario.router");
+const funcionario = require("./src/router/funcionario.router"); //arquivo de rota do usuario
 
 const app = express();
 
@@ -9,9 +9,9 @@ const port = 3000;
 
 app.use(express.json());
 
-connectToDatabase();
+connectToDatabase(); //conectando com o banco
 
-app.use("/funcionario", funcionario);
+app.use("/funcionario", funcionario); //chamando as rotas do funcionario
 
 app.get("/", (req,res) => {
     res.send({
