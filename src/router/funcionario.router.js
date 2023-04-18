@@ -3,7 +3,7 @@ const router = express.Router();
 const funcionarioController = require("../controller/funcionario.controller");
 
 // rotas GET
-router.get('/findById:id', funcionarioController.findEmployeeByIdController);
+router.get('/findById/:id', funcionarioController.findEmployeeByIdController);
 router.get('/findAll', funcionarioController.findAllEmployeesController);
 
 // rotas POST
