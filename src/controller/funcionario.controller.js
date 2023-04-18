@@ -66,13 +66,12 @@ const removeEmployeeController = async (req,res) => {
         const deletedEmployee = await employeeService.removeEmployeeService(req.params.id);
 
         console.log(deletedEmployee);
-        res.status(200).send({message: `Sucesso, funcionario deletado!`});
         
-        /* if(deletedEmployee.deletedCount > 0){
-            res.status(200).send({message: `Sucesso, funcionario deletado!`});
-        }else{
+        if(deletedEmployee == null){
             res.status(404).send({message: `Funcionario nao encontrado, tente novamente!`});
-        } */
+        }else{
+            res.status(200).send({message: `Sucesso, funcionario deletado!`});
+        }
 
     }catch (err){
         console.log(`erro: ${err.message}`);
