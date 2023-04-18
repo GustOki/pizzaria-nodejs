@@ -12,7 +12,6 @@ const findEmployeeByIdController = async (req,res) => {
 
     }catch (err){
         if(err.kind == "ObjectId"){
-            console.log(err.kind == "ObjectId");
             return res.status(400).send({message: `ID informado esta incorreto, tente novamente!`});
         }
 
@@ -66,11 +65,14 @@ const removeEmployeeController = async (req,res) => {
 
         const deletedEmployee = await employeeService.removeEmployeeService(req.params.id);
 
-        if(deletedEmployee.deletedCount > 0){
+        console.log(deletedEmployee);
+        res.status(200).send({message: `Sucesso, funcionario deletado!`});
+        
+        /* if(deletedEmployee.deletedCount > 0){
             res.status(200).send({message: `Sucesso, funcionario deletado!`});
         }else{
             res.status(404).send({message: `Funcionario nao encontrado, tente novamente!`});
-        }
+        } */
 
     }catch (err){
         console.log(`erro: ${err.message}`);
