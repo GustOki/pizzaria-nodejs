@@ -26,6 +26,13 @@ FuncionarioSchema.pre("save", async function(next) {
     next();
 });
 
+FuncionarioSchema.pre("findOneAndUpdate", async function(next) {
+    if(this._update.senha){
+        this._update.senha = await bcrypt.hash(this._update.senha, 10);
+    }
+    next();
+});
+
 const Funcionario = mongoose.model("funcionarios", FuncionarioSchema);
 
 module.exports = Funcionario;
