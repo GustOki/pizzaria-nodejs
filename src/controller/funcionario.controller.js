@@ -83,11 +83,13 @@ const addEmployeeAddressController = async (req,res) => {
     try{
         req.body.createdAt = new Date();
         const endereco = await employeeService.addEmployeeAddressService(req.params.id, req.body);
+        
+        console.log(endereco);
 
-        if(endereco.ok == 1){
-            res.status(201).send({message: `Endereco adicionado com sucesso!`});
-        }else{
+        if(endereco.value == null){
             res.status(404).send({message: `Algo deu errado no endereco, tente novamente!`});
+        }else{
+            res.status(201).send({message: `Endereco adicionado com sucesso!`});
         }
 
     }catch (err){
@@ -99,8 +101,15 @@ const addEmployeeAddressController = async (req,res) => {
 const removeEmployeeAddressController = async (req,res) => {
     try{
         const endereco = await employeeService.removeEmployeeAddressService(req.body.id, req.body.addressId);
+        let found = false;
 
-        if(endereco.ok == 1){
+        endereco.value.enderecos.map((valor, chave) => {
+            if(valor._id == req.body.addressId){
+                found = true;
+            }
+        });
+        
+        if(found){
             res.status(200).send({message: `Endereco removido com sucesso!`});
         }else{
             res.status(404).send({message: `Algo deu errado na remocao do endereco, tente novamente!`});
