@@ -20,11 +20,37 @@ const removeEmployeeService = (id) => {
 };
 
 const addEmployeeAddressService = (id, endereco) => {
-
+    return Funcionario.findOneAndUpdate(
+        {
+            _id: id,
+        },
+        {
+            $push: {
+                enderecos: endereco,
+            }
+        },
+        {
+            rawResult: true,
+        }
+    );
 };
 
-const removeEmployeeAddressService = (id) => {
-
+const removeEmployeeAddressService = (id, addressId) => {
+    return Funcionario.findOneAndUpdate(
+        {
+            _id: id,
+        },
+        {
+            $pull: {
+                enderecos: {
+                    _id: addressId
+                },
+            }
+        },
+        {
+            rawResult: true,
+        }
+    );
 }
 
 module.exports = {

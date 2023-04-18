@@ -15,6 +15,6 @@ router.put('/update/:id', funcionarioController.updateEmployeeController);
 
 // rotas DELETE
 router.delete('/remove/:id', funcionarioController.removeEmployeeController);
-router.delete('/removeAddress/:id', funcionarioController.removeEmployeeAddressController);
+router.delete('/removeAddress', funcionarioController.removeEmployeeAddressController);
 
 module.exports = router;
