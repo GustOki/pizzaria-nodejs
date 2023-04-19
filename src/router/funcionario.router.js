@@ -2,9 +2,11 @@ const express = require("express");
 const router = express.Router();
 const funcionarioController = require("../controller/funcionario.controller");
 
+const authMiddleware = require("../middleware/auth.middleware");
+
 // rotas GET
-router.get('/findById/:id', funcionarioController.findEmployeeByIdController);
-router.get('/findAll', funcionarioController.findAllEmployeesController);
+router.get('/findById/:id', authMiddleware, funcionarioController.findEmployeeByIdController);
+router.get('/findAll',  authMiddleware, funcionarioController.findAllEmployeesController);
 
 // rotas POST
 router.post('/create', funcionarioController.createEmployeeController);
