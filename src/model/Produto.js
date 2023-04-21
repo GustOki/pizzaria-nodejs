@@ -5,12 +5,12 @@ const ProdutoSchema = new mongoose.Schema({
     ingredientes: { type: String, required: true},
     precoUnitario: { type: Number, required: true},
     codigoBarra: { type: Number, unique: true, required: true},
-    /* categoria: [
+    categoria: [
         {
             _id: { type: mongoose.Schema.Types.ObjectId, required: true, unique: true, ref: "categorias"},
             createAt: { type: Date, required: true}
         },
-    ], */
+    ],
 });
 
 const Produto = mongoose.model("produtos", ProdutoSchema);
