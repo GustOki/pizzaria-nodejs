@@ -81,7 +81,6 @@ const removeEmployeeController = async (req,res) => {
 
 const addEmployeeAddressController = async (req,res) => {
     try{
-        req.body.createdAt = new Date();
         const endereco = await employeeService.addEmployeeAddressService(req.params.id, req.body);
         
         console.log(endereco);

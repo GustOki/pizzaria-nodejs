@@ -22,8 +22,7 @@ const createComandaController = async (req,res) => {
     try{
         const corpo = {
             ...req.body,
-            employeeId: req.employeeId,
-            createdAt: new Date(),
+            employeeId: req.employeeId
         }
         res.status(201).send(await ComandaService.createComandaService(req.params.id, corpo));
     }catch(err){
