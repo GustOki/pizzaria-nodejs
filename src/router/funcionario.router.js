@@ -3,20 +3,21 @@ const router = express.Router();
 const funcionarioController = require("../controller/funcionario.controller");
 
 const authMiddleware = require("../middleware/auth.middleware");
+const { validaFuncionario } = require("../middleware/validacao.middleware");
 
 // rotas GET
 router.get('/findById/:id', authMiddleware, funcionarioController.findEmployeeByIdController);
 router.get('/findAll',  authMiddleware, funcionarioController.findAllEmployeesController);
 
 // rotas POST
-router.post('/create', funcionarioController.createEmployeeController);
-router.post('/addAddress/:id', funcionarioController.addEmployeeAddressController);
+router.post('/create', validaFuncionario, funcionarioController.createEmployeeController);
+router.post('/addAddress/:id', authMiddleware, funcionarioController.addEmployeeAddressController);
 
 // rotas PUT
-router.put('/update/:id', funcionarioController.updateEmployeeController);
+router.put('/update/:id', authMiddleware, validaFuncionario, funcionarioController.updateEmployeeController);
 
 // rotas DELETE
-router.delete('/remove/:id', funcionarioController.removeEmployeeController);
-router.delete('/removeAddress', funcionarioController.removeEmployeeAddressController);
+router.delete('/remove/:id', authMiddleware, funcionarioController.removeEmployeeController);
+router.delete('/removeAddress', authMiddleware, funcionarioController.removeEmployeeAddressController);
 
 module.exports = router;
