@@ -19,7 +19,7 @@ const validaFuncionario = (req,res,next) => {
         return res.status(400).send({message: `O campo 'cargo' precisa ser preenchido!`});
     }
 
-    if(!req.body.admin){
+    if(req.body.admin == undefined){
         return res.status(400).send({message: `O campo 'admin' precisa ser preenchido!`});
     }
 
