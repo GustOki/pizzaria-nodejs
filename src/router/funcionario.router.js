@@ -4,21 +4,21 @@ const funcionarioController = require("../controller/funcionario.controller");
 const paginacao = require("../middleware/paginacao.middleware");
 
 const authMiddleware = require("../middleware/auth.middleware");
-const { validaFuncionario, validaId } = require("../middleware/validacao.middleware");
+const { validaFuncionario, validaEndereco, validaIdParams } = require("../middleware/validacao.middleware");
 
 // rotas GET
-router.get('/findById/:id', authMiddleware, validaId, funcionarioController.findEmployeeByIdController);
+router.get('/findById/:id', authMiddleware, validaIdParams, funcionarioController.findEmployeeByIdController);
 router.get('/findAll',  authMiddleware, paginacao, funcionarioController.findAllEmployeesController);
 
 // rotas POST
 router.post('/create', validaFuncionario, funcionarioController.createEmployeeController);
-router.post('/addAddress/:id', authMiddleware, validaId, funcionarioController.addEmployeeAddressController);
+router.post('/addAddress/:id', authMiddleware, validaIdParams, validaEndereco, funcionarioController.addEmployeeAddressController);
 
 // rotas PUT
-router.put('/update/:id', authMiddleware, validaId, validaFuncionario, funcionarioController.updateEmployeeController);
+router.put('/update/:id', authMiddleware, validaIdParams, validaFuncionario, funcionarioController.updateEmployeeController);
 
 // rotas DELETE
-router.delete('/remove/:id', authMiddleware, validaId, funcionarioController.removeEmployeeController);
+router.delete('/remove/:id', authMiddleware, validaIdParams, funcionarioController.removeEmployeeController);
 router.delete('/removeAddress', authMiddleware, funcionarioController.removeEmployeeAddressController);
 
 module.exports = router;
