@@ -64,8 +64,60 @@ const validaCategoria = (req,res,next) => {
     return next();
 }
 
+const validaPedido = (req,res,next) => {
+    let erros = []; //var para acumular os erros
+
+    if(!req.body.precoTotal){
+        erros.push("precoTotal");
+    }
+
+    if(!req.body.taxaDeEntrega){
+        erros.push("taxaDeEntrega");
+    }
+
+    if(!req.body.concluido){
+        erros.push("concluido");
+    }
+
+    //testanto quantos erros temos e tomando decisoes em relacao a isso
+    if(erros.length == 0){
+        return next();
+    }else{
+        if(erros.length > 1){
+            return res.status(400).send({message: `Os campos ${erros} precisam ser preenchidos!`});
+        }else{
+            return res.status(400).send({message: `O campo ${erros} precisa ser preenchido!`});
+        }
+    }
+}
+
+const validaComanda = (req,res,next) => {
+    let erros = []; //var para acumular os erros
+
+    if(!req.body.precoTotal){
+        erros.push("precoTotal");
+    }
+
+    if(!req.body.taxaDeEntrega){
+        erros.push("taxaDeEntrega");
+    }
+
+    //testanto quantos erros temos e tomando decisoes em relacao a isso
+    if(erros.length == 0){
+        return next();
+    }else{
+        if(erros.length > 1){
+            return res.status(400).send({message: `Os campos ${erros} precisam ser preenchidos!`});
+        }else{
+            return res.status(400).send({message: `O campo ${erros} precisa ser preenchido!`});
+        }
+    }
+}
+
 module.exports = {
     validaFuncionario,
     validaProduto,
-    validaCategoria
+    validaCategoria,
+    validaPedido,
+    validaComanda
 }
