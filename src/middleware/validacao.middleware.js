@@ -75,7 +75,7 @@ const validaPedido = (req,res,next) => {
         erros.push("taxaDeEntrega");
     }
 
-    if(!req.body.concluido){
+    if(req.body.concluido == undefined){
         erros.push("concluido");
     }
 
