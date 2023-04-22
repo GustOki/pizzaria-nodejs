@@ -124,11 +124,35 @@ const validaId = (req,res,next) => {
     }
 }
 
+const validaLogin = (req,res,next) => {
+    let erros = [];
+    
+    if(!req.body.registro){
+        erros.push("taxaDeEntrega");
+    }
+
+    if(!req.body.senha){
+        erros.push("senha");
+    }
+
+    //testanto quantos erros temos e tomando decisoes em relacao a isso
+    if(erros.length == 0){
+        return next();
+    }else{
+        if(erros.length > 1){
+            return res.status(400).send({message: `Os campos ${erros} precisam ser preenchidos!`});
+        }else{
+            return res.status(400).send({message: `O campo ${erros} precisa ser preenchido!`});
+        }
+    }
+}
+
 module.exports = {
     validaFuncionario,
     validaProduto,
     validaCategoria,
     validaPedido,
     validaComanda,
-    validaId
+    validaId,
+    validaLogin
 }
