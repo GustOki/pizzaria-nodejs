@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "Pizzaria",
-    "dateExported": "2023-04-22T13:32:23.630Z",
+    "dateExported": "2023-04-22T17:29:56.329Z",
     "version": "1.1",
     "folders": [
         {
@@ -57,7 +57,7 @@
             "method": "GET",
             "sortNum": 10000,
             "created": "2023-04-17T23:50:20.492Z",
-            "modified": "2023-04-19T00:04:11.464Z",
+            "modified": "2023-04-22T16:16:36.478Z",
             "headers": [],
             "params": [],
             "auth": {
@@ -75,7 +75,7 @@
             "method": "GET",
             "sortNum": 20000,
             "created": "2023-04-17T23:50:45.051Z",
-            "modified": "2023-04-19T00:03:05.654Z",
+            "modified": "2023-04-22T17:25:26.544Z",
             "headers": [],
             "params": [],
             "auth": {
@@ -93,12 +93,12 @@
             "method": "POST",
             "sortNum": 30000,
             "created": "2023-04-17T23:54:47.684Z",
-            "modified": "2023-04-18T23:23:22.020Z",
+            "modified": "2023-04-22T17:28:12.388Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"nome\": \"Gustavo Oki\",\n  \"registro\": \"GUGAOKI\",\n  \"senha\": \"senhasecreta123\",\n  \"cargo\": \"Gerente\"\n}",
+                "raw": "{\n  \"nome\": \"Millena\",\n  \"registro\": \"milliwaka\",\n  \"senha\": \"senhasecreta123\",\n  \"cargo\": \"Gerente\",\n  \"admin\": false\n}",
                 "form": []
             },
             "tests": []
@@ -127,13 +127,17 @@
             "colId": "fca81a7a-cf8a-466c-be02-a6dc02de6c0e",
             "containerId": "8de18798-c57e-4f17-aca0-25d54041613f",
             "name": "Delete",
-            "url": "{{BaseURL}}{{Port}}/funcionario/remove/643de116f36171fbefa48c10",
+            "url": "{{BaseURL}}{{Port}}/funcionario/remove/644418ec9d949d79db3e6c93",
             "method": "DELETE",
             "sortNum": 40000,
             "created": "2023-04-18T00:02:19.300Z",
-            "modified": "2023-04-18T00:15:49.927Z",
+            "modified": "2023-04-22T17:28:05.483Z",
             "headers": [],
             "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{token}}"
+            },
             "tests": []
         },
         {
@@ -141,17 +145,21 @@
             "colId": "fca81a7a-cf8a-466c-be02-a6dc02de6c0e",
             "containerId": "8de18798-c57e-4f17-aca0-25d54041613f",
             "name": "Add Address",
-            "url": "{{BaseURL}}{{Port}}/funcionario/addAddress/643de123f36171fbefa48c13",
+            "url": "{{BaseURL}}{{Port}}/funcionario/addAddress/6443e5b942da69b21d6c3672",
             "method": "POST",
             "sortNum": 60000,
             "created": "2023-04-18T00:27:49.194Z",
-            "modified": "2023-04-18T23:08:52.518Z",
+            "modified": "2023-04-22T16:25:32.142Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"rua\": \"rua teste 3\",\n  \"numero\": 321,\n  \"CEP\": \"11235-999\"\n}",
+                "raw": "{\n  \"rua\": \"rua teste 1\",\n  \"numero\": 321,\n  \"CEP\": \"11235-999\"\n}",
                 "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{token}}"
             },
             "tests": []
         },
@@ -183,12 +191,12 @@
             "method": "POST",
             "sortNum": 90000,
             "created": "2023-04-18T23:46:45.146Z",
-            "modified": "2023-04-18T23:47:49.673Z",
+            "modified": "2023-04-22T15:57:53.575Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"registro\": \"GUGAOKI\",\n  \"senha\": \"senhasecreta123\"\n}",
+                "raw": "{\n  \"senha\": \"senhasecreta123\"\n}",
                 "form": []
             },
             "tests": []
@@ -198,13 +206,24 @@
             "colId": "fca81a7a-cf8a-466c-be02-a6dc02de6c0e",
             "containerId": "789fc0ca-6f2c-490f-a272-dd703900528d",
             "name": "FindAll",
-            "url": "{{BaseURL}}{{Port}}/produto/findAll",
+            "url": "{{BaseURL}}{{Port}}/produto/findAll?limit=2&offset=0",
             "method": "GET",
             "sortNum": 110000,
             "created": "2023-04-20T23:27:58.392Z",
-            "modified": "2023-04-20T23:29:06.522Z",
+            "modified": "2023-04-22T16:09:53.373Z",
             "headers": [],
-            "params": [],
+            "params": [
+                {
+                    "name": "limit",
+                    "value": "2",
+                    "isPath": false
+                },
+                {
+                    "name": "offset",
+                    "value": "0",
+                    "isPath": false
+                }
+            ],
             "auth": {
                 "type": "bearer",
                 "bearer": "{{token}}"
@@ -252,16 +271,16 @@
             "colId": "fca81a7a-cf8a-466c-be02-a6dc02de6c0e",
             "containerId": "789fc0ca-6f2c-490f-a272-dd703900528d",
             "name": "Create",
-            "url": "{{BaseURL}}{{Port}}/produto/create",
+            "url": "{{BaseURL}}{{Port}}/produto/create/",
             "method": "POST",
             "sortNum": 140000,
             "created": "2023-04-20T23:30:03.607Z",
-            "modified": "2023-04-22T12:29:24.875Z",
+            "modified": "2023-04-22T15:18:45.569Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"nome\": \"Coca-cola\",\n  \"precoUnitario\": 6.0,\n  \"codigoBarra\": 11111,\n  \"categorias\": [\n      {\n        \"_id\": \"6443d2f03cb43171d80fc285\"\n      }\n    ]\n}",
+                "raw": "{\n  \"ingredientes\": \"Queijo mussarela, calabresa, oregano e molho de tomate\",\n  \"codigoBarra\": 987612314321424,\n  \"categora\": [\n      {\n        \"_id\": \"6443fab5a541f5f97441fb7e\"\n      }\n    ]\n}",
                 "form": []
             },
             "auth": {
@@ -374,12 +393,12 @@
             "method": "POST",
             "sortNum": 190000,
             "created": "2023-04-21T00:10:09.807Z",
-            "modified": "2023-04-22T12:28:32.539Z",
+            "modified": "2023-04-22T15:18:13.149Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"nome\": \"Bebida\"\n}",
+                "raw": "{\n  \"nome\": \"Pizza de doce\"\n}",
                 "form": []
             },
             "auth": {
@@ -434,16 +453,16 @@
             "colId": "fca81a7a-cf8a-466c-be02-a6dc02de6c0e",
             "containerId": "789fc0ca-6f2c-490f-a272-dd703900528d",
             "name": "Add Categoria",
-            "url": "{{BaseURL}}{{Port}}/produto/addCategoria/6441fd75ae824a5937caed63",
+            "url": "{{BaseURL}}{{Port}}/produto/addCategoria/6443fa30a541f5f97441fb6c",
             "method": "POST",
             "sortNum": 220000,
             "created": "2023-04-21T03:02:40.636Z",
-            "modified": "2023-04-21T03:06:31.239Z",
+            "modified": "2023-04-22T15:17:16.326Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"_id\": \"6441fdadae824a5937caed6a\"\n}",
+                "raw": "{\n  \"_id\": \"6443fa02a541f5f97441fb67\"\n}",
                 "form": []
             },
             "auth": {
@@ -484,12 +503,12 @@
             "method": "POST",
             "sortNum": 250000,
             "created": "2023-04-21T11:18:03.453Z",
-            "modified": "2023-04-22T12:49:33.172Z",
+            "modified": "2023-04-22T15:28:21.049Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"produtos\": [\n      {\"_id\": \"6443d3253cb43171d80fc28a\", \"quantidade\": 3},\n      {\"_id\": \"6441fd75ae824a5937caed63\", \"quantidade\": 2}\n  ],\n  \"precoTotal\": 30.5,\n  \"taxaDeEntrega\": 3.70\n}",
+                "raw": "{\n  \"produtos\": [\n      {\"_id\": \"6443d3253cb43171d80fc28a\", \"quantidade\": 3},\n      {\"_id\": \"6441fd75ae824a5937caed63\", \"quantidade\": 2}\n  ],\n  \"precoTotal\": 30.5\n}",
                 "form": []
             },
             "auth": {
@@ -584,7 +603,7 @@
             "method": "POST",
             "sortNum": 330000,
             "created": "2023-04-22T13:18:55.888Z",
-            "modified": "2023-04-22T13:22:50.993Z",
+            "modified": "2023-04-22T15:29:22.937Z",
             "headers": [],
             "params": [],
             "body": {
