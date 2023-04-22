@@ -4,8 +4,8 @@ const findEmployeeByIdService = (id) => {
     return Funcionario.findById(id);
 };
 
-const findAllEmployeesService = () => {
-    return Funcionario.find();
+const findAllEmployeesService = (limit, offset) => {
+    return Funcionario.find().limit(limit).skip(offset);
 };
 
 const createEmployeeService = (body) => {

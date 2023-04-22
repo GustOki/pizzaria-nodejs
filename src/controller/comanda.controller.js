@@ -11,7 +11,7 @@ const findComandaByIdController = async (req,res) => {
 
 const findAllComandasController = async (req,res) => {
     try{
-        res.status(200).send(await ComandaService.findAllComandasService());
+        res.status(200).send(await ComandaService.findAllComandasService(req.query.limit, req.query.offset));
     }catch(err){
         res.status(500).send({ message: "Erro inesperado, tente novamente!"});
         console.log(err.message);

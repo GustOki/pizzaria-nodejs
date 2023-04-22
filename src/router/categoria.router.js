@@ -3,9 +3,10 @@ const authMiddleware = require("../middleware/auth.middleware");
 
 const categoriaController = require("../controller/categoria.controller");
 const { validaCategoria, validaId } = require("../middleware/validacao.middleware");
+const paginacao = require("../middleware/paginacao.middleware");
 
 router.get("/find/:id", authMiddleware, validaId, categoriaController.findCategoriaByIdController);
-router.get("/findAll", authMiddleware, categoriaController.findAllCategoriasController);
+router.get("/findAll", authMiddleware, paginacao, categoriaController.findAllCategoriasController);
 
 router.post("/create", authMiddleware, validaCategoria, categoriaController.createCategoriaController);
 

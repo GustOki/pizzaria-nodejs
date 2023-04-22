@@ -22,7 +22,7 @@ const findEmployeeByIdController = async (req,res) => {
 
 const findAllEmployeesController = async (req,res) => {
     try{
-        return res.status(200).send(await employeeService.findAllEmployeesService());
+        return res.status(200).send(await employeeService.findAllEmployeesService(req.query.limit, req.query.offset));
     }catch (err){
         console.log(`erro: ${err.message}`);
         return res.status(500).send({message: `Erro inesperado, tente novamente!`});

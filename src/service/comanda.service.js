@@ -4,8 +4,8 @@ const findComandaByIdService = async (id) => {
     return Comanda.findById(id);
 };
 
-const findAllComandasService = () => {
-    return Comanda.find();
+const findAllComandasService = (limit, offset) => {
+    return Comanda.find().limit(limit).skip(offset);
 };
 
 const createComandaService = (body) => {
