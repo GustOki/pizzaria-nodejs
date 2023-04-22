@@ -1,3 +1,5 @@
+const ObjectId = require("mongoose").Types.ObjectId;
+
 const validaFuncionario = (req,res,next) => {
 
     //test um erro por vez e toma apenas uma decisao por vez
@@ -114,10 +116,19 @@ const validaComanda = (req,res,next) => {
     }
 }
 
+const validaId = (req,res,next) => {
+    if(ObjectId.isValid(req.params.id)){
+        return next();
+    }else{
+        return res.status(400).send({message: `O ID nao corresponde aos padroes necessarios`});
+    }
+}
+
 module.exports = {
     validaFuncionario,
     validaProduto,
     validaCategoria,
     validaPedido,
-    validaComanda
+    validaComanda,
+    validaId
 }
