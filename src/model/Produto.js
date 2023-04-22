@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const ProdutoSchema = new mongoose.Schema({
     nome: { type: String, unique: true, required: true} ,
-    ingredientes: { type: String, required: true },
+    ingredientes: { type: String, required: false },
     precoUnitario: { type: Number, required: true },
     codigoBarra: { type: Number, unique: true, required: true },
     categorias: [
