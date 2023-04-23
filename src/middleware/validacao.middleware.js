@@ -29,19 +29,17 @@ const validaFuncionario = (req,res,next) => {
 const validaEndereco = (req,res,next) => {
     let erros = [];
 
-    req.body.enderecos.map((value, key) => {
-        if(!value.rua){
-            erros.push(`'${key+1} - rua'`)
-        }
+    if(!req.body.rua){
+        erros.push("rua");
+    }
 
-        if(!value.numero){
-            erros.push(`'${key+1} - numero'`)
-        }
+    if(!req.body.numero){
+        erros.push("numero");
+    }
 
-        if(!value.CEP){
-            erros.push(`'${key+1} - CEP'`)
-        }
-    });
+    if(!req.body.CEP){
+        erros.push("CEP");
+    }
 
     if(erros.length == 0){
         return next();

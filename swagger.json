@@ -105,7 +105,7 @@
                 }
             }
         },
-        "/funcionario/find/{id}":{
+        "/funcionario/findById/{id}":{
             "get":{
                 "security": [
                     {
@@ -117,10 +117,10 @@
                 "tags": ["Funcionario"],
                 "parameters": [
                     {
-                        "in": "query",
+                        "in": "path",
                         "required": true,
                         "schema":{
-                            "type": "integer"
+                            "type": "string"
                         },
                         "name": "id"
                     }
@@ -190,16 +190,17 @@
                 "summary": "Criar um funcionario novo",
                 "description": "Rota responsavel por criar um novo funcionario atraves das informacoes passadas no endpoint",
                 "tags": ["Funcionario"],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/components/schemas/Funcionario"
-                        },
-                        "name": "body"
-                    }
-                ],
+                "requestBody": {
+                    "content": {
+                        "application/json":{
+                            "schema":{
+                                "type":"object",
+                                "$ref": "#/components/schemas/Funcionario"
+                            }
+                        }
+                    },
+                    "required": true
+                },
                 "responses":{
                     "201":{
                         "description": "retorna o objeto criado no banco",
@@ -243,22 +244,25 @@
                 "tags": ["Funcionario"],
                 "parameters": [
                     {
-                        "in": "query",
+                        "in": "path",
                         "required": true,
                         "schema":{
-                            "type": "integer"
+                            "type": "string"
                         },
                         "name": "id"
-                    },
-                    {
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/components/schemas/Funcionario"
-                        },
-                        "name": "body"
                     }
                 ],
+                "requestBody": {
+                    "content": {
+                        "application/json":{
+                            "schema":{
+                                "type":"object",
+                                "$ref": "#/components/schemas/Funcionario"
+                            }
+                        }
+                    },
+                    "required": true
+                },
                 "responses":{
                     "200":{
                         "description": "retorna o objeto atualizado no banco",
@@ -320,7 +324,7 @@
             }
         },
 
-        "/funcionario/delete/{id}":{
+        "/funcionario/remove/{id}":{
             "delete":{
                 "security": [
                     {
@@ -332,10 +336,10 @@
                 "tags": ["Funcionario"],
                 "parameters": [
                     {
-                        "in": "query",
+                        "in": "path",
                         "required": true,
                         "schema":{
-                            "type": "integer"
+                            "type": "string"
                         },
                         "name": "id"
                     }
@@ -412,22 +416,25 @@
                 "tags": ["Funcionario"],
                 "parameters": [
                     {
-                        "in": "query",
+                        "in": "path",
                         "required": true,
                         "schema":{
-                            "type": "integer"
+                            "type": "string"
                         },
                         "name": "id"
-                    },
-                    {
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/components/schemas/EmployeeAddress"
-                        },
-                        "name": "body"
                     }
                 ],
+                "requestBody": {
+                    "content": {
+                        "application/json":{
+                            "schema":{
+                                "type":"object",
+                                "$ref": "#/components/schemas/EmployeeAddress"
+                            }
+                        }
+                    },
+                    "required": true
+                },
                 "responses":{
                     "201":{
                         "description": "retorna um funcionario com seu novo endereco",
@@ -489,7 +496,7 @@
             }
         },
         
-        "/funcionario/removeAddress/{id}":{
+        "/funcionario/removeAddress/":{
             "delete": {
                 "security": [
                     {
@@ -499,16 +506,24 @@
                 "summary": "Remove o endereco no funcionario",
                 "description": "Rota responsavel por remover enderecos no funcionario informado",
                 "tags": ["Funcionario"],
-                "parameters": [
-                    {
-                        "in": "query",
-                        "required": true,
-                        "schema":{
-                            "type": "integer"
-                        },
-                        "name": "id"
-                    }
-                ],
+                "requestBody": {
+                    "content": {
+                        "application/json":{
+                            "schema":{
+                                "type":"object",
+                                "properties":{
+                                    "id": {
+                                        "type": "string"
+                                    },
+                                    "addressId": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
                 "responses":{
                     "200":{
                         "description": "retorna um funcionario com seu endereco removido",
@@ -585,7 +600,7 @@
                     "nome": {
                         "type": "string"
                     },
-                    "registo": {
+                    "registro": {
                         "type": "string"
                     },
                     "senha": {
