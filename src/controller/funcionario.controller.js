@@ -31,6 +31,8 @@ const findAllEmployeesController = async (req,res) => {
 
 const createEmployeeController = async(req,res) => {
     try{
+        const body = req.body;
+        
         return res.status(201).send(await employeeService.createEmployeeService(body));
     }catch (err){
         console.log(`erro: ${err.message}`);
