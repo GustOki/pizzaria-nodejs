@@ -2,6 +2,9 @@ pizzaria-nodejs
 
 Criando um sistema de banco de dados e login de uma pizzaria nodejs (iTalents)
 
+Codigo desenvolvido em JavaScript
+![NodeJS](https://cdn-images-1.medium.com/max/1200/0*MNVJq_8e0SJoqZb5.jpg "NodeJS")
+
 ## Instalação
 
 1. Baixe todo o código;
@@ -27,6 +30,8 @@ Todos os endpoints do produto serão listados abaixo:
 | 401    | retorna o erro de autenticação                                  |
 | 404    | retorna uma mensagem informando que não encontrou o funcionário |
 
+
+Trecho do codigo do controller findById:
 
 ```javascript
 const findEmployeeByIdController = async (req,res) => {
